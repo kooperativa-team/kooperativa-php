@@ -1,0 +1,28 @@
+{
+    "name": "kooperativa/sdk",
+    "description": "Official PHP SDK for the Kooperativa API: enrich and search professional profiles and companies, track hiring signals and job changes, and manage webhook monitors.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["kooperativa", "b2b", "enrichment", "data-enrichment", "sdk", "api-client"],
+    "homepage": "https://kooperativa.io",
+    "authors": [
+        {
+            "name": "Kooperativa",
+            "email": "support@kooperativa.io"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/kooperativa-team/kooperativa-php/issues",
+        "docs": "https://docs.kooperativa.io"
+    },
+    "require": {
+        "php": ">=8.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kooperativa\\": "src/"
+        }
+    }
+}
