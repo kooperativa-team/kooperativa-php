@@ -4,8 +4,21 @@ Official PHP SDK for the [Kooperativa](https://kooperativa.io) API. Enrich and s
 
 ## Installation
 
+Not on Packagist yet, so Composer needs to be told where to find it. Add this repository entry to your project's `composer.json`, then require the package as usual:
+
+```json
+{
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/kooperativa-team/kooperativa-php"
+    }
+  ]
+}
+```
+
 ```bash
-composer require kooperativa/sdk
+composer require kooperativa/sdk:dev-main
 ```
 
 Requires a Kooperativa API key. Get one from your [account dashboard](https://kooperativa.io/api-keys).
