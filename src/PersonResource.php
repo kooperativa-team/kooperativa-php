@@ -21,6 +21,28 @@ final class PersonResource
         ]);
     }
 
+    /**
+     * Same shape as enrich(), but read from the live source instead of the data
+     * lake, and written back to it, so a following enrich() returns this result.
+     *
+     * Provide exactly one of linkedinUrl or username. There is no id parameter,
+     * because an internal id means nothing to a source that has never seen our
+     * data lake.
+     *
+     * Metered: $0.001 per call on top of the flat license, the only endpoint
+     * pair that is. A call is billed whenever the live source answered, so a 404
+     * costs the same as a hit, and note that a 404 throws KooperativaApiError,
+     * meaning a call that lands in your catch block has still been billed. A 503
+     * is never billed.
+     */
+    public function enrichRealtime(?string $linkedinUrl = null, ?string $username = null): array
+    {
+        return $this->http->get('/person/realtime', [
+            'linkedin_url' => $linkedinUrl,
+            'username' => $username,
+        ]);
+    }
+
     /** Cheap existence check before a full lookup. Throws KooperativaApiError (404) if not held. */
     public function check(?string $linkedinUrl = null, ?string $username = null, ?string $id = null): array
     {
